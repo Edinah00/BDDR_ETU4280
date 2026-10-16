@@ -32,3 +32,12 @@ La quantité est dans DETAIL_COMMANDE, car elle dépend à la fois de la command
 
     Non, la clé étrangère n’est pas NOT NULL, car certains clients sont de passage. Il faut un LEFT JOIN pour ne pas perdre les commandes sans client.
 
+
+## Étape 05 : Les Serveurs et les tables
+
+- SERVEUR (**id_serveur** , nom ,contact) (nouveau)
+
+- TABLE (**id_table** , nom) (nouveau) 
+
+- COMMANDE (**id_commande** , id_client ,date , id_table ,id_serveur) (Modifié)
+ Une table de la salle existe en permanence, alors qu’une commande est ponctuelle. Une table reçoit plusieurs commandes, et un plat à emporter n’a pas de table. table est un mot réservé en SQL, donc on utilise table_gargotte.
