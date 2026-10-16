@@ -15,3 +15,11 @@
     Piège. Pourquoi ne pas simplement ajouter une colonne categorie VARCHAR(50) dans la table des
     plats ? Donnez un exemple de problème concret.
     Avec un VARCHAR, on peut écrire « Soupe » et « soupes » : ce sont 2 catégories différentes. Et pour renommer une catégorie, il faut modifier tous les plats.
+
+## Étape 03 : Les Commandes
+
+- COMMANDE (**id_commande** , date) (nouveau)
+
+- DETAIL_COMMANDE (**id_detail** , id_commande ,id_plat ,quantité) 
+
+La quantité est dans DETAIL_COMMANDE, car elle dépend à la fois de la commande et du plat.

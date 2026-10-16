@@ -6,3 +6,8 @@ FROM categorie
 LEFT JOIN plat on plat.id_categorie = categorie.id_categorie
 GROUP BY categorie.nom;
 -- 3
+SELECT id_commande , SUM(detail_commande.quantite * plat.prix) 
+AS prix_total_commande 
+FROM detail_commande 
+JOIN plat ON detail_commande.id_plat = plat.id_plat
+GROUP BY id_commande;
