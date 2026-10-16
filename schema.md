@@ -23,3 +23,12 @@
 - DETAIL_COMMANDE (**id_detail** , id_commande ,id_plat ,quantité) 
 
 La quantité est dans DETAIL_COMMANDE, car elle dépend à la fois de la commande et du plat.
+
+## Étape 04 : Les Clients
+
+- CLIENT (**id_client** , nom ,contact) (nouveau)
+
+- COMMANDE (**id_commande** , id_client ,date) (Modifié)
+
+    Non, la clé étrangère n’est pas NOT NULL, car certains clients sont de passage. Il faut un LEFT JOIN pour ne pas perdre les commandes sans client.
+

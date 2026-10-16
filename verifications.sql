@@ -11,3 +11,9 @@ AS prix_total_commande
 FROM detail_commande 
 JOIN plat ON detail_commande.id_plat = plat.id_plat
 GROUP BY id_commande;
+
+-- 4
+
+SELECT commande.id_commande as commande , COALESCE(client.nom,'client de passage') as Nom_client
+from commande
+left join client on commande.id_client = client.id_client;
