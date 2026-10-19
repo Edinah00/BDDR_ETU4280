@@ -41,3 +41,10 @@ La quantité est dans DETAIL_COMMANDE, car elle dépend à la fois de la command
 
 - COMMANDE (**id_commande** , id_client ,date , id_table ,id_serveur) (Modifié)
  Une table de la salle existe en permanence, alors qu’une commande est ponctuelle. Une table reçoit plusieurs commandes, et un plat à emporter n’a pas de table. table est un mot réservé en SQL, donc on utilise table_gargotte.
+
+## Étape 06 : Les paiements
+
+**Piège.** Une colonne `montant_paye` dans `commande` ne dit pas combien a été payé par chaque mode (espèces + MVola), ni la référence de chaque transaction. Elle peut aussi devenir fausse si un paiement est ajouté sans la mettre à jour.
+
+- MODE_PAIEMENT(**id_mode**, nom) (nouveau)
+- PAIEMENT(**id_paiement**, #id_commande, #id_mode, montant, reference?) (nouveau)
