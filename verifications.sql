@@ -43,3 +43,13 @@ LEFT JOIN (SELECT id_commande, SUM(montant) AS paye
            FROM paiement
            GROUP BY id_commande) p ON p.id_commande = c.id_commande
 WHERE t.total - COALESCE(p.paye, 0) > 0;
+
+-- 7 : ancien calcul (le total change)
+SELECT d.id_commande, SUM(p.prix * d.quantite) AS total_ancien
+FROM detail_commande d JOIN plat p ON p.id_plat = d.id_plat
+GROUP BY d.id_commande;
+
+-- 7 : nouveau calcul (le total ne bouge plus)
+SELECT id_commande, SUM(prix_unitaire * quantite) AS total
+FROM detail_commande
+GROUP BY id_commande;

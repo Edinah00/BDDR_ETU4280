@@ -48,3 +48,11 @@ La quantité est dans DETAIL_COMMANDE, car elle dépend à la fois de la command
 
 - MODE_PAIEMENT(**id_mode**, nom) (nouveau)
 - PAIEMENT(**id_paiement**, #id_commande, #id_mode, montant, reference?) (nouveau)
+
+## Étape 07 : Les prix changent
+
+**Piège.** Le total d'une commande change car il est calculé avec le prix actuel du plat. On fige le prix dans `DETAIL_COMMANDE.prix_unitaire` au moment de la commande, et `HISTORIQUE_PRIX` garde tous les prix de chaque plat.
+
+- (tables précédentes inchangées, sauf :)
+- DETAIL_COMMANDE(**id_detail**, #id_commande, #id_plat, quantite, prix_unitaire) (modifié)
+- HISTORIQUE_PRIX(**id_historique**, #id_plat, prix, date_debut) (nouveau)
