@@ -62,3 +62,12 @@ JOIN recette r ON r.id_plat = d.id_plat
 JOIN ingredient i ON i.id_ingredient = r.id_ingredient
 WHERE c.date_commande::date = DATE '2026-10-12'
 GROUP BY i.id_ingredient, i.nom, i.unite;
+
+-- 9
+SELECT m.nom AS menu, m.prix AS prix_menu,
+       SUM(p.prix * cm.quantite) AS somme_carte,
+       SUM(p.prix * cm.quantite) - m.prix AS economie
+FROM plat m
+JOIN composition_menu cm ON cm.id_menu = m.id_plat
+JOIN plat p ON p.id_plat = cm.id_plat
+GROUP BY m.id_plat, m.nom, m.prix;

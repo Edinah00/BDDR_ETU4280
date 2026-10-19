@@ -63,3 +63,10 @@ La quantité est dans DETAIL_COMMANDE, car elle dépend à la fois de la command
 
 - INGREDIE NT(**id_ingredient**, nom, unite, stock) (nouveau)
 - RECETTE(**#id_plat**, **#id_ingredient**, quantite) (nouveau)
+
+## Étape 09 : Les menus du jour
+
+**Piège.** Un menu se commande comme un plat : avec une table `menu` séparée, `DETAIL_COMMANDE` devrait référencer deux tables (plat ou menu). On le garde donc dans `PLAT`, et `COMPOSITION_MENU` relie un plat à ses plats composants. La contrainte `CHECK (id_menu <> id_plat)` empêche un menu de se contenir lui-même.
+
+- PLAT(**id_plat**, nom, prix, #id_categorie)
+- COMPOSITION_MENU(**#id_menu**, **#id_plat**, quantite) (nouveau)
