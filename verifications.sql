@@ -53,3 +53,12 @@ GROUP BY d.id_commande;
 SELECT id_commande, SUM(prix_unitaire * quantite) AS total
 FROM detail_commande
 GROUP BY id_commande;
+
+-- 8
+SELECT i.nom, i.unite, SUM(r.quantite * d.quantite) AS consommation
+FROM commande c
+JOIN detail_commande d ON d.id_commande = c.id_commande
+JOIN recette r ON r.id_plat = d.id_plat
+JOIN ingredient i ON i.id_ingredient = r.id_ingredient
+WHERE c.date_commande::date = DATE '2026-10-12'
+GROUP BY i.id_ingredient, i.nom, i.unite;

@@ -56,3 +56,10 @@ La quantité est dans DETAIL_COMMANDE, car elle dépend à la fois de la command
 - (tables précédentes inchangées, sauf :)
 - DETAIL_COMMANDE(**id_detail**, #id_commande, #id_plat, quantite, prix_unitaire) (modifié)
 - HISTORIQUE_PRIX(**id_historique**, #id_plat, prix, date_debut) (nouveau)
+
+## Étape 08 : Les ingrédients
+
+**Piège.** Une colonne `VARCHAR(500)` « riz, zébu, brèdes » ne permet pas de stocker les quantités ni les unités, ni de calculer la consommation ou de suivre le stock. Il faudrait découper le texte, et les fautes de frappe créent de faux ingrédients.
+
+- INGREDIE NT(**id_ingredient**, nom, unite, stock) (nouveau)
+- RECETTE(**#id_plat**, **#id_ingredient**, quantite) (nouveau)
